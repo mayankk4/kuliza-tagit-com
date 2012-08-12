@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://www.tagit.com/';
+$config['base_url']	= 'http://kuliza.tagit.com/';
 
 /*
 |--------------------------------------------------------------------------

@@ -3,9 +3,10 @@
 
 -- DROP TABLE IF EXISTS `app_users`;
 
-CREATE TABLE `app_users` (
+CREATE TABLE IF NOT EXISTS `app_users` (
   `facebook_id` varchar(100) NOT NULL,
   `fb_access_token` varchar(2048) DEFAULT NULL,
+  `expires` timestamp NOT NULL DEFAULT '2012-12-12',
   PRIMARY KEY (`facebook_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -18,7 +19,7 @@ CREATE TABLE `app_users` (
 
 CREATE TABLE IF NOT EXISTS `og_actions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,	
-  `action_id` int(11) NOT NULL,
+  `action_id` varchar(30) NOT NULL,
   `action_name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -59,9 +60,9 @@ CREATE TABLE IF NOT EXISTS `og_object_type` (
 CREATE TABLE IF NOT EXISTS `og_objects` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type_id` int(11) NOT NULL,
-  `url` varchar(30) NOT NULL,
+  `url` varchar(1024) NOT NULL,
   `title` varchar(30) NOT NULL,
-  `image` varchar(30) NOT NULL,
+  `image` varchar(1024) NOT NULL,
   `description` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (type_id) REFERENCES og_object_type(id) ON DELETE CASCADE
