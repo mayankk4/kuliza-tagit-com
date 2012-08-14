@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `app_users` (
   `fb_access_token` varchar(2048) DEFAULT NULL,
   `expires` timestamp NOT NULL DEFAULT '2012-12-12',
   PRIMARY KEY (`facebook_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 # Create table og_actions
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `og_actions` (
   `action_id` varchar(30) NOT NULL,
   `action_name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 # Create table og_object_type
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `og_object_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 # Create table og_object_type_properties
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `og_object_type` (
 --   `og_object_type_id` int(11) NOT NULL,
 --   `property_name` varchar(30) NOT NULL,    
 --   PRIMARY KEY (`id`)
--- ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
  
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `og_objects` (
   `description` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (type_id) REFERENCES og_object_type(id) ON DELETE CASCADE
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 # Create table readers_actions
@@ -83,4 +83,4 @@ CREATE TABLE IF NOT EXISTS `readers_action_object` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (action_id) REFERENCES og_actions(id) ON DELETE CASCADE,
   FOREIGN KEY (object_id) REFERENCES og_objects(id) ON DELETE CASCADE
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
